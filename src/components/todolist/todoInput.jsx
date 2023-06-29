@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import useInput from "../../hooks/useInput";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../store/actions/todoAction";
+
 import { v4 as uuidv4 } from "uuid";
+import { addTodo } from "../../modules/todo";
 
 const TodoInputContainer = styled.div`
   position: sticky;
@@ -36,24 +37,24 @@ const TodoInputComponent = () => {
   };
   return (
     <TodoInputContainer>
-      <div className="todoBox">
+      <div className='todoBox'>
         <form onSubmit={onSubmitHandler}>
-          <div className="namecontainer">
-            <span className="namespan">제목</span>
+          <div className='namecontainer'>
+            <span className='namespan'>제목</span>
             <input
-              type="text"
+              type='text'
               value={nameValue}
               onChange={nameChange}
-              className="nameInput"
+              className='nameInput'
             />
           </div>
-          <div className="desccontainer">
-            <span className="descspan">설명</span>
+          <div className='desccontainer'>
+            <span className='descspan'>설명</span>
             <input
-              type="text"
+              type='text'
               value={descValue}
               onChange={descChange}
-              className="descInput"
+              className='descInput'
             />
           </div>
           <button onClick={onSubmitHandler}>추가하기</button>

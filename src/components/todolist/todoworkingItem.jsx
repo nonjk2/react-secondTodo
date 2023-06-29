@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { delTodo, updateTodo } from "../../store/actions/todoAction";
+import { delTodo, updateTodo } from "../../modules/todo";
 
 const TodoWorkItemContainer = styled.div`
   width: 25%;
@@ -75,21 +75,20 @@ const TodoWorkItem = (props) => {
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}
-    >
-      <div className="ItemWrapper">
-        <div className="cardName">
+      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}>
+      <div className='ItemWrapper'>
+        <div className='cardName'>
           <span>{item.name}</span>
         </div>
-        <div className="cardDesc">{item.desc}</div>
-        <div className="btns">
-          <div className="buttonContainer">
-            <button onClick={onDelHandler} className="delCard">
+        <div className='cardDesc'>{item.desc}</div>
+        <div className='btns'>
+          <div className='buttonContainer'>
+            <button onClick={onDelHandler} className='delCard'>
               삭제
             </button>
           </div>
-          <div className="buttonContainer">
-            <button onClick={onIsDoneHandler} className="enterCard">
+          <div className='buttonContainer'>
+            <button onClick={onIsDoneHandler} className='enterCard'>
               {item.isDone ? "취소" : "완료"}
             </button>
           </div>
