@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { delTodo, updateTodo } from "../../modules/todo";
+import { delTodo, updateTodo } from "../../store/actions/todoAction";
+import { useNavigate } from "react-router-dom";
 
 const TodoWorkItemContainer = styled.div`
   width: 25%;
@@ -56,6 +57,7 @@ const TodoWorkItem = (props) => {
   const cardRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     if (cardRef.current) {
       setDimensions({
@@ -64,18 +66,24 @@ const TodoWorkItem = (props) => {
       });
     }
   }, []);
+
   const x = (index % 4) * dimensions.width;
   const y = Math.floor(index / 4) * dimensions.height;
+
   const onDelHandler = () => {
     dispatch(delTodo(item.id));
   };
   const onIsDoneHandler = () => {
     dispatch(updateTodo(item));
   };
+  const onRouteDetail = () => {
+    navigate(`${item.id}`);
+  };
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}>
+      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}
+      onClick={onRouteDetail}>
       <div className='ItemWrapper'>
         <div className='cardName'>
           <span>{item.name}</span>
