@@ -19,14 +19,12 @@ const TodoIsDoneComponent = () => {
   const DoneList = todoList.filter((todo) => todo.isDone);
   return (
     <TodoIsDoneContainer>
-      <div className="boxCategorytitle">
+      <div className='boxCategorytitle'>
         <h1>Done</h1>
       </div>
-      <div className="CardContainer">
+      <div className='CardContainer'>
         {!!DoneList.length &&
-          DoneList.map((e, i) => (
-            <TodoWorkItem key={e.id} item={e} index={i} />
-          ))}
+          DoneList.map((e, i) => <Todoworking key={e.id} item={e} index={i} />)}
       </div>
     </TodoIsDoneContainer>
   );

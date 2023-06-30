@@ -4,6 +4,7 @@ import TodoList from "./pages/todolist";
 import GlobalStyle from "./util/globalStyle";
 import Header from "./layout/header";
 import styled from "styled-components";
+import TodoItemDetail from "./components/todolist/todoItemDetail";
 
 const LayoutContainer = styled.div`
   max-width: 1200px;
@@ -34,9 +35,9 @@ function Layout() {
 function Nav() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path='/' element={<Layout />}>
         <Route index element={<TodoList />}></Route>
-        <Route path="/:id" element={<TodoItemDetail />}></Route>
+        <Route path='/:id' element={<TodoItemDetail />}></Route>
       </Route>
     </Routes>
   );
