@@ -78,14 +78,15 @@ const TodoWorkItem = (props) => {
   const onIsDoneHandler = () => {
     dispatch(updateTodo(item));
   };
-  const onRouteDetail = () => {
-    navigate(`${item.id}`);
-  };
+  // const onRouteDetail = () => {
+  //   navigate(`${item.id}`);
+  // };
   return (
     <TodoWorkItemContainer
       ref={cardRef}
       style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}
-      onClick={onRouteDetail}>
+      // onClick={onRouteDetail}
+    >
       <div className='ItemWrapper'>
         <div className='cardName'>
           <span>{item.name}</span>

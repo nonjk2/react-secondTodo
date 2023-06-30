@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+// @import ('https://fonts.googleapis.com/css2?family=Dongle&display=swap')
 
 const GlobalStyle = createGlobalStyle`
   * {
