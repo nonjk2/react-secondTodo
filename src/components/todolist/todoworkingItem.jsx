@@ -6,16 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { delTodo, updateTodo } from "../../modules/todo";
 
 const TodoWorkItemContainer = styled.div`
-  width: 25%;
+  width: 100%;
   padding: 5px;
   transition: transform 0.3s ease;
   position: absolute;
-  min-width: 25%;
   .ItemWrapper {
+    background-color: #fff;
     border: 0.5px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
-    height: 250px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,13 +26,7 @@ const TodoWorkItemContainer = styled.div`
       justify-content: center;
       padding: 10px 0;
     }
-    .cardDesc {
-      white-space: pre-line;
-      word-break: break-all;
-      flex-grow: 1;
-      padding: 10px 5px;
-      background-color: #f6f6f6;
-    }
+
     .btns {
       width: 100%;
       display: flex;
@@ -69,8 +63,8 @@ const TodoWorkItem = (props) => {
     }
   }, []);
 
-  const x = (index % 4) * dimensions.width;
-  const y = Math.floor(index / 4) * dimensions.height;
+  const x = index * dimensions.width;
+  const y = Math.floor(index) * dimensions.height;
 
   const onDelHandler = () => {
     dispatch(delTodo(item.id));
@@ -84,21 +78,21 @@ const TodoWorkItem = (props) => {
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}
-      onClick={onRouteDetail}>
-      <div className='ItemWrapper'>
-        <div className='cardName'>
+      style={{ transform: `translate3d(0, ${y}px, 0)` }}
+      // onClick={onRouteDetail}
+    >
+      <div className="ItemWrapper">
+        <div className="cardName">
           <span>{item.name}</span>
         </div>
-        <div className='cardDesc'>{item.desc}</div>
-        <div className='btns'>
-          <div className='buttonContainer'>
-            <button onClick={onDelHandler} className='delCard'>
+        <div className="btns">
+          <div className="buttonContainer">
+            <button onClick={onDelHandler} className="delCard">
               삭제
             </button>
           </div>
-          <div className='buttonContainer'>
-            <button onClick={onIsDoneHandler} className='enterCard'>
+          <div className="buttonContainer">
+            <button onClick={onIsDoneHandler} className="enterCard">
               {item.isDone ? "취소" : "완료"}
             </button>
           </div>

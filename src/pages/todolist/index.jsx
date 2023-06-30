@@ -8,7 +8,8 @@ const TodoListContainer = styled.div`
   display: flex;
   .flexgrow {
     flex-grow: 1;
-    min-width: 70%;
+    display: flex;
+    /* min-width: 70%; */
   }
   .stickyside {
     width: 30%;

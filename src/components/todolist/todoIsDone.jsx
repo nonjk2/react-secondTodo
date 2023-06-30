@@ -10,13 +10,15 @@ const TodoIsDoneContainer = styled.div`
     position: relative;
     flex-wrap: wrap;
     width: 100%;
-    min-width: 800px;
+    /* min-width: 800px; */
   }
 `;
 
 const TodoIsDoneComponent = () => {
   const todoList = useSelector((state) => state.todo);
   const DoneList = todoList.filter((todo) => todo.isDone);
+
+  // const DoneLists = useMemo(()=> ([...DoneLists , todoList.filter()]))
   return (
     <TodoIsDoneContainer>
       <div className="boxCategorytitle">

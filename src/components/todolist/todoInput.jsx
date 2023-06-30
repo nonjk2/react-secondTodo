@@ -96,8 +96,8 @@ const TodoInputComponent = () => {
   const dispatch = useDispatch();
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (nameValue.length || descValue.length == 0) {
-      alert("잘못된 접근입니다.");
+    if (!nameValue.length && !descValue.length) {
+      return alert("잘못된 접근입니다.");
     }
     dispatch(
       addTodo({
