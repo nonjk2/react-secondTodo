@@ -27,7 +27,7 @@ const initialState = [];
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return (state = [action.payload, ...state]);
+      return (state = [action.payload, ...state]); //밀려나는 애니메이션을 위해서 action.payload 앞에도 존재
     case DELETE_TODO:
       return (state = state.filter((todo) => todo.id !== action.payload));
     case UPDATE_TODO:

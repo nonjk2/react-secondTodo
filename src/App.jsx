@@ -35,9 +35,9 @@ function Layout() {
 function Nav() {
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<TodoList />}></Route>
-        <Route path='/:id' element={<TodoItemDetail />}></Route>
+        <Route path="/:id" element={<TodoItemDetail />}></Route>
       </Route>
     </Routes>
   );

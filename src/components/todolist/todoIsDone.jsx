@@ -10,21 +10,25 @@ const TodoIsDoneContainer = styled.div`
     position: relative;
     flex-wrap: wrap;
     width: 100%;
-    min-width: 800px;
+    /* min-width: 800px; */
   }
 `;
 
 const TodoIsDoneComponent = () => {
   const todoList = useSelector((state) => state.todo);
   const DoneList = todoList.filter((todo) => todo.isDone);
+
+  // const DoneLists = useMemo(()=> ([...DoneLists , todoList.filter()]))
   return (
     <TodoIsDoneContainer>
-      <div className='boxCategorytitle'>
+      <div className="boxCategorytitle">
         <h1>Done</h1>
       </div>
-      <div className='CardContainer'>
+      <div className="CardContainer">
         {!!DoneList.length &&
-          DoneList.map((e, i) => <Todoworking key={e.id} item={e} index={i} />)}
+          DoneList.map((e, i) => (
+            <TodoWorkItem key={e.id} item={e} index={i} />
+          ))}
       </div>
     </TodoIsDoneContainer>
   );

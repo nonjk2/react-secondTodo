@@ -11,7 +11,7 @@ const TodoworkingContainer = styled.div`
     position: relative;
     flex-wrap: wrap;
     width: 100%;
-    min-width: 800px;
+    /* min-width: 800px; */
   }
 `;
 
@@ -21,10 +21,10 @@ const TodoworkingComponent = () => {
   const containerHeight = Math.ceil(workingList.length / 4) * 250 || 250;
   return (
     <TodoworkingContainer>
-      <div className='boxCategorytitle'>
+      <div className="boxCategorytitle">
         <h1>Working</h1>
       </div>
-      <div className='cardContainer' style={{ height: `${containerHeight}px` }}>
+      <div className="cardContainer" style={{ height: `${containerHeight}px` }}>
         {!!workingList.length &&
           workingList.map((e, i) => (
             <TodoWorkItem key={e.id} item={e} index={i} />

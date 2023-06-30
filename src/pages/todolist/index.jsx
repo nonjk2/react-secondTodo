@@ -9,8 +9,8 @@ const TodoListContainer = styled.div`
   flex-direction: column;
   .flexgrow {
     flex-grow: 1;
-    min-width: 70%;
-    z-index: -1;
+    display: flex;
+    /* min-width: 70%; */
   }
   .stickyside {
     width: 100%;

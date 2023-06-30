@@ -99,11 +99,8 @@ const TodoInputComponent = () => {
   const dispatch = useDispatch();
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (nameValue.length === 0) {
-      return alert("제목이 비어있습니다.");
-    }
-    if (descValue.length === 0) {
-      return alert("내용이 비어있습니다");
+    if (!nameValue.length && !descValue.length) {
+      return alert("잘못된 접근입니다.");
     }
     dispatch(
       addTodo({
@@ -131,10 +128,10 @@ const TodoInputComponent = () => {
           </div>
           <div className='desccontainer'>
             <span className='descspan'>설명</span>
-            <input
+            <textarea
               value={descValue}
               onChange={descChange}
-              className='descInput'
+              className='descText'
             />
           </div>
           <button onClick={onSubmitHandler}>추가하기</button>
