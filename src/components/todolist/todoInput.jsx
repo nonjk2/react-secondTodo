@@ -7,14 +7,86 @@ import { addTodo } from "../../modules/todo";
 
 const TodoInputContainer = styled.div`
   position: sticky;
-  top: 150px;
+  top: 300px;
   z-index: 1;
-  padding: 15px 10px;
+  padding: 10px 35px;
 
   .todoBox {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 240px;
+    height: 400px;
+    border-radius: 10px;
+    border: 1.3px solid rgb(241, 233, 192);
+    background-color: rgb(241, 233, 192);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 15px;
+  }
+  .todoBox > form {
+    height: 85%;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 200px;
+  }
+  .namecontainer {
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .namecontainer > .namespan {
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .namecontainer > input {
+    border: none;
+    background: #eeeeee;
+    height: 100%;
+    color: #020202;
+    font-size: 15px;
+    white-space: pre-wrap;
+    width: 170px;
+    padding: 0px 15px;
+  }
+  .desccontainer {
+    border-bottom: 1px solid #ddd;
+    height: 200px;
+    margin-top: 10px;
+  }
+  .desccontainer > .descspan {
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .descText {
+    border: none;
+    background: #eeeeee;
+    height: 100%;
+    color: #020202;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    resize: none;
+    padding: 0px 15px;
+    width: 170px;
+  }
+  .descText::-webkit-scrollbar {
+    display: none;
+  }
+  form > button {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    background: #676767;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    height: 30px;
+    width: 80px;
   }
 `;
 
@@ -24,6 +96,9 @@ const TodoInputComponent = () => {
   const dispatch = useDispatch();
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    if (nameValue.length || descValue.length == 0) {
+      alert("잘못된 접근입니다.");
+    }
     dispatch(
       addTodo({
         name: nameValue,
@@ -50,11 +125,10 @@ const TodoInputComponent = () => {
           </div>
           <div className='desccontainer'>
             <span className='descspan'>설명</span>
-            <input
-              type='text'
+            <textarea
               value={descValue}
               onChange={descChange}
-              className='descInput'
+              className='descText'
             />
           </div>
           <button onClick={onSubmitHandler}>추가하기</button>
