@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { modifyTodo } from "../../modules/todo";
 
 const Itemdiv = styled.div`
   @font-face {
@@ -93,7 +92,6 @@ const Itemdiv = styled.div`
 const TodoItemDetail = () => {
   const todoList = useSelector((state) => state.todo);
   const { id } = useParams();
-  const dispatch = useDispatch();
   const [todoItem] = todoList.filter((card) => card.id === id);
   const [edited, setEdited] = useState(false);
   const navigate = useNavigate();
@@ -130,35 +128,35 @@ const TodoItemDetail = () => {
           {todoItem.isDone ? <h1>Done</h1> : <h1>Working</h1>}
           {edited ? (
             <input
-              className='titleInput'
-              name='title'
+              className="titleInput"
+              name="title"
               value={title}
               onChange={onChangeEditInput}
             />
           ) : (
-            <div className='detailtitle'>{title}</div>
+            <div className="detailtitle">{title}</div>
           )}
           {edited ? (
             <input
-              className='contentInput'
-              name='desc'
+              className="contentInput"
+              name="desc"
               value={desc}
               onChange={onChangeEditInput}
             />
           ) : (
-            <div className='detaildesc'>{desc}</div>
+            <div className="detaildesc">{desc}</div>
           )}
-          <div className='buttons'>
+          <div className="buttons">
             {edited ? (
-              <button className='save' onClick={onSaveHandler}>
+              <button className="save" onClick={onSaveHandler}>
                 저장하기
               </button>
             ) : (
-              <button className='change' onClick={onModifyHandler}>
+              <button className="change" onClick={onModifyHandler}>
                 수정하기
               </button>
             )}
-            <button className='main' onClick={onMain}>
+            <button className="main" onClick={onMain}>
               메인으로
             </button>
           </div>
