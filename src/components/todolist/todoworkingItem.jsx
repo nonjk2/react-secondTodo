@@ -10,6 +10,13 @@ const TodoWorkItemContainer = styled.div`
   padding: 5px;
   transition: transform 0.3s ease;
   position: absolute;
+  @font-face {
+    font-family: "KOTRAHOPE";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
   .ItemWrapper {
     background-color: #fff;
     border: 0.5px solid #ccc;
@@ -24,9 +31,12 @@ const TodoWorkItemContainer = styled.div`
       word-break: break-all;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding: 6px 0;
     }
-
+    .cardName > span {
+      font-size: 30px;
+      font-family: "KOTRAHOPE";
+    }
     .btns {
       width: 100%;
       display: flex;
@@ -42,6 +52,12 @@ const TodoWorkItemContainer = styled.div`
           height: 35px;
           border-radius: 5px;
           cursor: pointer;
+        }
+        .enterCard {
+          background-color: #dbdb9f;
+        }
+        .delCard {
+          background-color: #dedede;
         }
       }
     }
@@ -78,21 +94,19 @@ const TodoWorkItem = (props) => {
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(0, ${y}px, 0)` }}
-      // onClick={onRouteDetail}
-    >
-      <div className="ItemWrapper">
-        <div className="cardName">
-          <span>{item.name}</span>
+      style={{ transform: `translate3d(0, ${y}px, 0)` }}>
+      <div className='ItemWrapper'>
+        <div className='cardName'>
+          <span onClick={onRouteDetail}>{item.name}</span>
         </div>
-        <div className="btns">
-          <div className="buttonContainer">
-            <button onClick={onDelHandler} className="delCard">
+        <div className='btns'>
+          <div className='buttonContainer'>
+            <button onClick={onDelHandler} className='delCard'>
               삭제
             </button>
           </div>
-          <div className="buttonContainer">
-            <button onClick={onIsDoneHandler} className="enterCard">
+          <div className='buttonContainer'>
+            <button onClick={onIsDoneHandler} className='enterCard'>
               {item.isDone ? "취소" : "완료"}
             </button>
           </div>

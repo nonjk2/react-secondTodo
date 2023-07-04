@@ -2,6 +2,7 @@
 const ADD_TODO = "ADD_TODO";
 const UPDATE_TODO = "UPDATE_TODO";
 const DELETE_TODO = "DELETE_TODO";
+const MODIFY_TODO = "MODIFY_TODO";
 
 export const addTodo = (post) => {
   return {
@@ -22,6 +23,12 @@ export const delTodo = (id) => {
     payload: id,
   };
 };
+export const modifyTodo = (id, todo) => {
+  return {
+    type: "MODIFY_TODO",
+    payload: { id, todo },
+  };
+};
 const initialState = [];
 
 const todoReducer = (state = initialState, action) => {
@@ -37,7 +44,13 @@ const todoReducer = (state = initialState, action) => {
         }
         return todo;
       }));
-
+    case MODIFY_TODO:
+      return (state = state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, isModify: !todo.isModify };
+        }
+        return todo;
+      }));
     default:
       return state;
   }
