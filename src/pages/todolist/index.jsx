@@ -8,15 +8,17 @@ const TodoListContainer = styled.div`
   display: flex;
   flex-direction: column;
   .flexgrow {
+    margin-top: 100px;
     flex-grow: 1;
     display: flex;
+    /* z-index: -1; */
     /* min-width: 70%; */
   }
   .stickyside {
     width: 100%;
-    height: 65px;
-    min-height: 30%;
+    min-height: 20%;
     position: fixed;
+    z-index: 1;
   }
 `;
 

@@ -8,14 +8,13 @@ import { addTodo } from "../../modules/todo";
 const TodoInputContainer = styled.div`
   position: sticky;
   z-index: 1;
-  padding: 10px 0px;
 
   .todoBox {
     position: sticky;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 62.5%;
+    width: 1200px;
     border-radius: 10px;
     border: 2.5 solid rgb(241, 233, 192);
     /* background-color: rgb(241, 233, 192); */
@@ -99,8 +98,10 @@ const TodoInputComponent = () => {
   const dispatch = useDispatch();
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (!nameValue.length && !descValue.length) {
-      return alert("잘못된 접근입니다.");
+    if (!nameValue.length) {
+      return alert("제목을 입력해주세요!");
+    } else if (!descValue.length) {
+      return alert("내용을 입력해주세요!");
     }
     dispatch(
       addTodo({
@@ -128,10 +129,10 @@ const TodoInputComponent = () => {
           </div>
           <div className='desccontainer'>
             <span className='descspan'>설명</span>
-            <textarea
+            <input
               value={descValue}
               onChange={descChange}
-              className='descText'
+              className='descInput'
             />
           </div>
           <button onClick={onSubmitHandler}>추가하기</button>
