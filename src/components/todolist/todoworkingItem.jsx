@@ -79,7 +79,6 @@ const TodoWorkItem = (props) => {
     }
   }, []);
 
-  const x = index * dimensions.width;
   const y = Math.floor(index) * dimensions.height;
 
   const onDelHandler = () => {
@@ -94,19 +93,20 @@ const TodoWorkItem = (props) => {
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(0, ${y}px, 0)` }}>
-      <div className='ItemWrapper'>
-        <div className='cardName'>
+      style={{ transform: `translate3d(0, ${y}px, 0)` }}
+    >
+      <div className="ItemWrapper">
+        <div className="cardName">
           <span onClick={onRouteDetail}>{item.name}</span>
         </div>
-        <div className='btns'>
-          <div className='buttonContainer'>
-            <button onClick={onDelHandler} className='delCard'>
+        <div className="btns">
+          <div className="buttonContainer">
+            <button onClick={onDelHandler} className="delCard">
               삭제
             </button>
           </div>
-          <div className='buttonContainer'>
-            <button onClick={onIsDoneHandler} className='enterCard'>
+          <div className="buttonContainer">
+            <button onClick={onIsDoneHandler} className="enterCard">
               {item.isDone ? "취소" : "완료"}
             </button>
           </div>
