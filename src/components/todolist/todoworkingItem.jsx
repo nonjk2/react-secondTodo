@@ -85,7 +85,6 @@ const TodoWorkItem = (props) => {
     }
   }, []);
 
-  const x = index * dimensions.width;
   const y = Math.floor(index) * dimensions.height;
 
   const onDelHandler = () => {
@@ -104,13 +103,7 @@ const TodoWorkItem = (props) => {
       style={{ transform: `translate3d(0, ${y}px, 0)` }}>
       <div className='ItemWrapper'>
         <div className='cardName'>
-          <span
-            type='text'
-            onChange={(e) => setItemName(e.target.value)}
-            onClick={onRouteDetail}
-            value={itemName}>
-            {item.name}
-          </span>
+          <span onClick={onRouteDetail}>{item.name}</span>
         </div>
         <div className='btns'>
           <div className='buttonContainer'>
