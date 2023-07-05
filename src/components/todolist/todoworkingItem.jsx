@@ -36,6 +36,10 @@ const TodoWorkItemContainer = styled.div`
     .cardName > span {
       font-size: 30px;
       font-family: "KOTRAHOPE";
+      text-align: center;
+    }
+    .cardName > span:hover {
+      cursor: pointer;
     }
     .btns {
       width: 100%;
@@ -68,8 +72,10 @@ const TodoWorkItem = (props) => {
   const { item, index } = props;
   const cardRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [itemName, setItemName] = useState(item.name);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (cardRef.current) {
       setDimensions({
@@ -90,23 +96,23 @@ const TodoWorkItem = (props) => {
   const onRouteDetail = () => {
     navigate(`${item.id}`);
   };
+
   return (
     <TodoWorkItemContainer
       ref={cardRef}
-      style={{ transform: `translate3d(0, ${y}px, 0)` }}
-    >
-      <div className="ItemWrapper">
-        <div className="cardName">
+      style={{ transform: `translate3d(0, ${y}px, 0)` }}>
+      <div className='ItemWrapper'>
+        <div className='cardName'>
           <span onClick={onRouteDetail}>{item.name}</span>
         </div>
-        <div className="btns">
-          <div className="buttonContainer">
-            <button onClick={onDelHandler} className="delCard">
+        <div className='btns'>
+          <div className='buttonContainer'>
+            <button onClick={onDelHandler} className='delCard'>
               삭제
             </button>
           </div>
-          <div className="buttonContainer">
-            <button onClick={onIsDoneHandler} className="enterCard">
+          <div className='buttonContainer'>
+            <button onClick={onIsDoneHandler} className='enterCard'>
               {item.isDone ? "취소" : "완료"}
             </button>
           </div>
