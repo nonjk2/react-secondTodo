@@ -112,11 +112,18 @@ const TodoItemDetail = () => {
       setNewDesc(e.target.value);
     }
   };
-  const onModifyHandler = () => {
+  const onModifyHandler = (child) => {
     setEdited(true);
   };
   const onSaveHandler = () => {
     setEdited(false);
+    dispatch(
+      modifyTodo({
+        id: id,
+        name: title,
+        desc: desc,
+      })
+    );
   };
   const onMain = () => {
     navigate(-1);
